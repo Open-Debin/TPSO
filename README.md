@@ -13,7 +13,7 @@ The full implementation will be made available soon.
 - Minimal inference overhead
 
 ## 📄 Paper
-[Link will be added upon publication]
+[[Link to paper]](https://arxiv.org/abs/2511.19811)
 
 ## 📊 Citation
 If you find this work useful, please consider citing:
