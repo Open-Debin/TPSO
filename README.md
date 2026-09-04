@@ -93,8 +93,23 @@ tpso-generate \
   --output-dir outputs/chair-rebuilt
 ```
 
-See [reproducibility notes](docs/reproducibility.md) and
-[benchmark generation](docs/paper-benchmarks.md) for paper experiments.
+## Generate From 1,000 Prompts
+
+The CSV must contain `file_name` and `caption` columns. This command uses its
+first 1,000 prompts and generates 10 images per prompt:
+
+```bash
+tpso-benchmark \
+  --group table1 \
+  --experiment sd15 \
+  --limit-prompts 1000 \
+  --prompts-csv path/to/coco_30k_randomly_sampled_2014_val.csv \
+  --output-root outputs/coco-1k
+```
+
+Outputs use `{prompt_id}_{variant_id}.jpg`, producing 10,000 images. Replace
+`sd15` with `sd21` or `sd35`. See [benchmark generation](docs/paper-benchmarks.md)
+for the paper protocols.
 
 ## Citation
 
