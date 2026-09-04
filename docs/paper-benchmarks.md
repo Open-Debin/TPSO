@@ -42,6 +42,11 @@ tpso-benchmark --group table5 --output-root outputs/paper
 Table I uses 5,000 prompts. Tables II-V use 1,000 prompts. Each prompt produces
 10 images. Existing complete batches are skipped when resuming.
 
-Use `--dry-run` to inspect experiments and `--experiment NAME` to run one row.
-Do not reuse an output directory with different settings because its
-`manifest.json` must match the requested protocol.
+Preview a run without generating images:
+
+```bash
+tpso-benchmark --group table1 --dry-run
+```
+
+Use `--experiment sd15` to generate only the SD1.5 result. If you change the
+model, prompt count, seed, or batch size, choose a new `--output-root`.
