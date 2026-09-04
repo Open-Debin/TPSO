@@ -112,11 +112,10 @@ embedding is prompt-independent, so TPSO downloads a precomputed version from
 | Option | Meaning |
 | --- | --- |
 | `--config PATH` | Load a YAML configuration from `configs/`. |
-| `--kappa FLOAT` | Set the target semantic similarity to the original prompt. |
-| `--diversity-weight FLOAT` | Set the diversity-loss weight, lambda. |
-| `--scheduler-ratio FLOAT` | Set the coarse-to-fine schedule; a negative value reverses its direction. |
-| `--offset-init NAME` | Select the token-offset initialization distribution. |
-| `--precision MODE` | Select `fp16`, `bf16`, or `fp32`. |
+| `--kappa FLOAT` | Set the target semantic similarity `kappa` (Table II). |
+| `--diversity-weight FLOAT` | Set the diversity-loss weight `lambda` (Table V). |
+| `--scheduler-ratio FLOAT` | Set the scheduling ratio `r`; a negative value reverses its direction (Table III). |
+| `--offset-init NAME` | Select the token-offset initialization distribution (Table IV). |
 | `--overwrite` | Replace images that already exist in the output directory. |
 
 Options written on the command line override values loaded from `--config`.
