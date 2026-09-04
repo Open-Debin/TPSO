@@ -26,10 +26,10 @@ If you find this code useful for your research, please [cite](#citation) our pap
 
 ## Release Status
 
-This repository is preparing the `v0.1.0` release candidate. The package, CPU
-tests, command-line dry runs, distribution metadata, and end-to-end GPU
-generation on all three backbones are verified. Publication of the three
-checksum-pinned unconditional-context artifacts remains pending.
+The `v0.1.0` package, CPU tests, command-line dry runs, distribution metadata,
+and end-to-end GPU generation on all three backbones are verified. The
+checksum-pinned unconditional contexts are published on
+[Hugging Face](https://huggingface.co/PonyMeng/TPSO).
 
 ## Supported Models
 

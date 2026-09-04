@@ -45,21 +45,21 @@ The following commands are intentionally manual:
 
 ```bash
 hf auth login
-hf repos create Open-Debin/TPSO --repo-type model --exist-ok
+hf repos create PonyMeng/TPSO --repo-type model --exist-ok
 
-hf upload Open-Debin/TPSO \
+hf upload PonyMeng/TPSO \
   huggingface/README.md README.md --repo-type model
-hf upload Open-Debin/TPSO \
+hf upload PonyMeng/TPSO \
   artifacts/unconditional/sd15_kappa0.8_lambda1.pt \
   sd15_kappa0.8_lambda1.pt --repo-type model
-hf upload Open-Debin/TPSO \
+hf upload PonyMeng/TPSO \
   artifacts/unconditional/sd21_kappa0.8_lambda1.pt \
   sd21_kappa0.8_lambda1.pt --repo-type model
-hf upload Open-Debin/TPSO \
+hf upload PonyMeng/TPSO \
   artifacts/unconditional/sd35_kappa0.8_lambda0.pt \
   sd35_kappa0.8_lambda0.pt --repo-type model
 
-hf repos tag create Open-Debin/TPSO v0.1.0 \
+hf repos tag create PonyMeng/TPSO v0.1.0 \
   --repo-type model \
   --message "TPSO v0.1.0 unconditional contexts"
 ```
