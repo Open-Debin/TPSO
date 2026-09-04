@@ -8,9 +8,9 @@ Hugging Face Hub.
 
 | Model | Local and Hub filename | Hub repository | SHA-256 |
 | --- | --- | --- | --- |
-| SD1.5 | `sd15_kappa0.8_lambda1.pt` | `Open-Debin/TPSO` | Pending final rebuild |
-| SD2.1 | `sd21_kappa0.8_lambda1.pt` | `Open-Debin/TPSO` | Pending final rebuild |
-| SD3.5 | `sd35_kappa0.8_lambda0.pt` | `Open-Debin/TPSO` | Pending final rebuild |
+| SD1.5 | `sd15_kappa0.8_lambda1.pt` | `Open-Debin/TPSO` | `8e0c7c1f...aadb5e` |
+| SD2.1 | `sd21_kappa0.8_lambda1.pt` | `Open-Debin/TPSO` | `a97e85151d...2f925` |
+| SD3.5 | `sd35_kappa0.8_lambda0.pt` | `Open-Debin/TPSO` | `7fcba1c236...452ba` |
 
 Generate all three files and a candidate manifest with:
 

@@ -7,21 +7,21 @@
       "filename": "sd15_kappa0.8_lambda1.pt",
       "repo_id": "Open-Debin/TPSO",
       "revision": "v0.1.0",
-      "sha256": null
+      "sha256": "8e0c7c1f87daa6a19da8e7ab06600138cbc35a61bd897a972fc37a6621aadb5e"
     },
     {
       "model": "sd21",
       "filename": "sd21_kappa0.8_lambda1.pt",
       "repo_id": "Open-Debin/TPSO",
       "revision": "v0.1.0",
-      "sha256": null
+      "sha256": "a97e85151d66e671d3339f6eff24389738225723b7d7fed29658e0afdcf2f925"
     },
     {
       "model": "sd35",
       "filename": "sd35_kappa0.8_lambda0.pt",
       "repo_id": "Open-Debin/TPSO",
       "revision": "v0.1.0",
-      "sha256": null
+      "sha256": "7fcba1c236b9663ff2618a30e769eec8cf214ded28a53048f37ebd5e5ac452ba"
     }
   ]
 }
