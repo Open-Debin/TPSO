@@ -14,6 +14,16 @@ If you find this code useful for your research, please [cite](#citation) our pap
 > **Abstract:** Image diversity remains a fundamental challenge for text-to-image diffusion models. Low-diversity generation often leads to repetitive outputs, increasing sampling redundancy and hindering both creative exploration and downstream applications. A key factor is the tendency of diffusion models to collapse toward strong modes in the learned distribution. Existing attempts to improve diversity, such as steering-based guidance, often introduce distortions that degrade image quality. To address this issue, we propose Token-Prompt Embedding Space Optimization (TPSO), a training-free and model-agnostic module. TPSO introduces learnable parameters to explore underrepresented regions of the token embedding space, reducing the tendency to repeatedly sample from strong modes of the distribution. Meanwhile, a prompt-level semantic constraint regulates distribution shifts, preventing quality degradation while preserving semantic fidelity. Extensive experiments on MS-COCO across three representative diffusion backbones demonstrate that TPSO substantially improves diversity, boosting performance from 1.10 to 4.18, while maintaining image quality with only a modest inference-time overhead of 3.6% to 8.9%.
 
 
+<p align="center">
+  <img src="assets/comparison_baselines.png" alt="TPSO qualitative comparison with diversity baselines" width="100%">
+</p>
+<p align="center"><em>TPSO produces diverse images while preserving prompt fidelity.</em> <a href="assets/comparison_baselines.pdf">Vector PDF</a></p>
+
+<p align="center">
+  <img src="assets/pipeline_optim_infer.png" alt="Overview of the TPSO optimization and inference pipeline" width="100%">
+</p>
+<p align="center"><em>TPSO optimization and inference pipeline.</em> <a href="assets/pipeline_optim_infer.pdf">Vector PDF</a></p>
+
 ## Release Status
 
 This repository is preparing the `v0.1.0` release candidate. The package, CPU
