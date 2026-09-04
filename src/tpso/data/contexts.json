@@ -1,0 +1,27 @@
+{
+  "format_version": 1,
+  "artifact_version": "0.1.0",
+  "artifacts": [
+    {
+      "model": "sd15",
+      "filename": "sd15_kappa0.8_lambda1.pt",
+      "repo_id": "Open-Debin/TPSO",
+      "revision": "v0.1.0",
+      "sha256": null
+    },
+    {
+      "model": "sd21",
+      "filename": "sd21_kappa0.8_lambda1.pt",
+      "repo_id": "Open-Debin/TPSO",
+      "revision": "v0.1.0",
+      "sha256": null
+    },
+    {
+      "model": "sd35",
+      "filename": "sd35_kappa0.8_lambda0.pt",
+      "repo_id": "Open-Debin/TPSO",
+      "revision": "v0.1.0",
+      "sha256": null
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+model:
+  name: sd21
+  model_id: sd2-community/stable-diffusion-2-1
+  model_revision: bb2154823665391b4fb29b0b9cf82a198964ee05
+  projection_model_id: laion/CLIP-ViT-H-14-laion2B-s32B-b79K
+  projection_revision: 1c2b8495b28150b8a4922ee1c8edee224c284c0c
+
+tpso:
+  kappa: 0.8
+  tolerance: 0.01
+  diversity_weight: 1.0
+  scheduler_ratio: 0.4
+  learning_rate: 0.01
+  optimizer: rmsprop
+  max_steps: 50
+  offset_init: approx_zero
+  offset_std: 0.0001

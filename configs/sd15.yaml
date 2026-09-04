@@ -1,0 +1,17 @@
+model:
+  name: sd15
+  model_id: sd-legacy/stable-diffusion-v1-5
+  model_revision: 451f4fe16113bff5a5d2269ed5ad43b0592e9a14
+  projection_model_id: openai/clip-vit-large-patch14
+  projection_revision: 32bd64288804d66eefd0ccbe215aa642df71cc41
+
+tpso:
+  kappa: 0.8
+  tolerance: 0.01
+  diversity_weight: 1.0
+  scheduler_ratio: 0.4
+  learning_rate: 0.01
+  optimizer: rmsprop
+  max_steps: 50
+  offset_init: approx_zero
+  offset_std: 0.0001

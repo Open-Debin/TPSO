@@ -1,0 +1,6 @@
+-r requirements.txt
+build>=1.2
+pip-audit>=2.9
+pytest>=8.0
+ruff>=0.9
+twine>=5.0

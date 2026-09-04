@@ -1,0 +1,23 @@
+TPSO
+Copyright 2026 Debin Meng
+
+This product depends on third-party open-source packages, including Hugging Face
+Diffusers and Transformers. Those packages are not vendored in this repository
+and remain subject to their respective licenses and notices.
+
+The Stable Diffusion model weights are not distributed with TPSO. Users are
+responsible for reviewing and complying with each model's license and access
+conditions before downloading or using the weights.
+
+Stable Diffusion 1.5 is distributed by its model repository under the
+CreativeML Open RAIL-M license. Stable Diffusion 2.1 is distributed under the
+CreativeML Open RAIL++-M license. Stable Diffusion 3.5 Medium is gated and
+distributed under the Stability AI Community License, which includes
+commercial-use conditions and an annual-revenue threshold. These model terms
+are separate from the Apache-2.0 license for TPSO source code and may change;
+review the pinned model repositories before use.
+
+The SD2.1 default points to the unaffiliated
+sd2-community/stable-diffusion-2-1 mirror because the original Stability AI Hub
+repository was deprecated. The mirrored weights remain subject to the
+CreativeML Open RAIL++-M license described by that model repository.

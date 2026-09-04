@@ -1,0 +1,15 @@
+model:
+  name: sd35
+  model_id: stabilityai/stable-diffusion-3.5-medium
+  model_revision: b940f670f0eda2d07fbb75229e779da1ad11eb80
+
+tpso:
+  kappa: 0.8
+  tolerance: 0.01
+  diversity_weight: 10.0
+  scheduler_ratio: 0.4
+  learning_rate: 0.01
+  optimizer: rmsprop
+  max_steps: 200
+  offset_init: approx_zero
+  offset_std: 0.0001

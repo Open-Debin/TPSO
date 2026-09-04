@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tpso-diffusion"
+version = "0.1.0"
+description = "Training-Free Diverse Image Generation via Semantic Prompt Embedding Optimization"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [
+  {name = "Debin Meng"},
+  {name = "Chen Jin"},
+  {name = "Zheng Gao"},
+  {name = "Yanran Li"},
+  {name = "Ioannis Patras"},
+  {name = "Georgios Tzimiropoulos"},
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "accelerate>=0.30,<2",
+  "diffusers>=0.38,<0.39",
+  "huggingface-hub>=1.0,<2",
+  "Pillow>=10.2.0",
+  "PyYAML>=6.0",
+  "safetensors>=0.8",
+  "torch>=2.1,<3",
+  "transformers>=5.10,<6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "pip-audit>=2.9",
+  "pytest>=8.0",
+  "ruff>=0.9",
+  "twine>=5.0",
+]
+
+[project.scripts]
+tpso-generate = "tpso.cli.generate:main"
+tpso-precompute = "tpso.cli.precompute:main"
+tpso-benchmark = "tpso.cli.benchmark:main"
+
+[project.urls]
+Homepage = "https://github.com/Open-Debin/TPSO"
+Repository = "https://github.com/Open-Debin/TPSO"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"tpso.data" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gpu: requires a CUDA device and model access"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

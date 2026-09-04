@@ -1,0 +1,9 @@
+name: tpso
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - torch==2.6.0
+      - -r requirements.txt

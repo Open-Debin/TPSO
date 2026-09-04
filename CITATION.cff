@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use TPSO, please cite the IJCNN 2026 paper."
+title: "TPSO: Training-Free Diverse Image Generation via Semantic Prompt Embedding Optimization"
+type: software
+version: 0.1.0
+license: Apache-2.0
+authors:
+  - family-names: Meng
+    given-names: Debin
+  - family-names: Jin
+    given-names: Chen
+  - family-names: Gao
+    given-names: Zheng
+  - family-names: Li
+    given-names: Yanran
+  - family-names: Patras
+    given-names: Ioannis
+  - family-names: Tzimiropoulos
+    given-names: Georgios
+repository-code: "https://github.com/Open-Debin/TPSO"
+preferred-citation:
+  type: conference-paper
+  title: "TPSO: Training-Free Diverse Image Generation via Semantic Prompt Embedding Optimization"
+  authors:
+    - family-names: Meng
+      given-names: Debin
+    - family-names: Jin
+      given-names: Chen
+    - family-names: Gao
+      given-names: Zheng
+    - family-names: Li
+      given-names: Yanran
+    - family-names: Patras
+      given-names: Ioannis
+    - family-names: Tzimiropoulos
+      given-names: Georgios
+  year: 2026
+  conference:
+    name: "International Joint Conference on Neural Networks (IJCNN)"
