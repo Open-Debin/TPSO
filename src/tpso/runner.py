@@ -308,9 +308,14 @@ def generate(
         raise TypeError("Every prompt must be a string.")
     if any(not prompt.strip() for prompt in prompt_list):
         raise ValueError("Prompts must contain at least one non-whitespace character.")
-    from .pipelines.common import planned_image_paths
+    from .pipelines.common import planned_prompt_image_paths
 
-    planned_image_paths(output_dir, len(prompt_list) * num_images, overwrite=overwrite)
+    output_paths = planned_prompt_image_paths(
+        output_dir,
+        len(prompt_list),
+        num_images,
+        overwrite=overwrite,
+    )
 
     if config_path:
         spec, config = load_config(config_path, model)
@@ -360,7 +365,7 @@ def generate(
         "config": config,
         **generation,
         "seed": seed,
-        "output_dir": output_dir,
+        "output_paths": output_paths,
         "overwrite": overwrite,
     }
     if model == "sd35":

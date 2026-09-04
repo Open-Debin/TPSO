@@ -25,7 +25,7 @@ class RecordingAdapter:
 
     def generate(self, **kwargs):
         self.generated = kwargs
-        return [kwargs["output_dir"] / "00.png"]
+        return kwargs["output_paths"]
 
 
 def test_default_cached_context_is_reused(tmp_path, monkeypatch):
@@ -199,7 +199,7 @@ def test_custom_context_rebuild_does_not_overwrite_paper_cache(tmp_path, monkeyp
 
 
 def test_existing_output_is_rejected_before_model_loading(tmp_path, monkeypatch):
-    (tmp_path / "00.png").touch()
+    (tmp_path / "0_0.jpg").touch()
 
     def unexpected(*_args, **_kwargs):
         raise AssertionError("Output conflicts must be detected before model loading.")
@@ -238,7 +238,15 @@ def test_generate_orchestrates_multiple_prompts_and_variants(tmp_path, monkeypat
     assert adapter.generated["num_variants"] == 3
     assert adapter.generated["conditional"] == {"conditional": torch.tensor(1)}
     assert adapter.generated["unconditional"] == {"unconditional": torch.tensor(1)}
-    assert paths == [tmp_path / "00.png"]
+    assert paths == [
+        tmp_path / "0_0.jpg",
+        tmp_path / "0_1.jpg",
+        tmp_path / "0_2.jpg",
+        tmp_path / "1_0.jpg",
+        tmp_path / "1_1.jpg",
+        tmp_path / "1_2.jpg",
+    ]
+    assert adapter.generated["output_paths"] == paths
 
 
 def test_rebuild_uses_archived_unconditional_token_mask(tmp_path, monkeypatch):

@@ -6,6 +6,7 @@ from PIL import Image
 
 from tpso.pipelines.common import (
     planned_image_paths,
+    planned_prompt_image_paths,
     save_images,
     scheduler_step_count,
     shared_latents,
@@ -69,6 +70,19 @@ def test_planned_image_paths_reject_conflicts_before_generation(tmp_path):
 
     with pytest.raises(FileExistsError, match="Refusing to overwrite"):
         planned_image_paths(tmp_path, 2)
+
+
+def test_planned_prompt_image_paths_use_paper_naming(tmp_path):
+    paths = planned_prompt_image_paths(tmp_path, prompt_count=2, num_variants=3)
+
+    assert [path.name for path in paths] == [
+        "0_0.jpg",
+        "0_1.jpg",
+        "0_2.jpg",
+        "1_0.jpg",
+        "1_1.jpg",
+        "1_2.jpg",
+    ]
 
 
 def test_shared_latents_reuses_noise_only_within_each_prompt():

@@ -160,3 +160,30 @@ def planned_image_paths(
             "choose another output directory or pass --overwrite."
         )
     return paths
+
+
+def planned_prompt_image_paths(
+    output_dir: str | Path,
+    prompt_count: int,
+    num_variants: int,
+    *,
+    overwrite: bool = False,
+) -> list[Path]:
+    """Create paper-compatible output paths for prompts and their variants."""
+
+    if prompt_count <= 0 or num_variants <= 0:
+        raise ValueError("Prompt and variant counts must be positive.")
+    directory = Path(output_dir).expanduser().resolve()
+    directory.mkdir(parents=True, exist_ok=True)
+    paths = [
+        directory / f"{prompt_id}_{variant_id}.jpg"
+        for prompt_id in range(prompt_count)
+        for variant_id in range(num_variants)
+    ]
+    conflicts = [path for path in paths if path.exists()]
+    if conflicts and not overwrite:
+        raise FileExistsError(
+            f"Refusing to overwrite {len(conflicts)} image(s) in {directory}; "
+            "choose another output directory or pass --overwrite."
+        )
+    return paths

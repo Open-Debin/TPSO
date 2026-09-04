@@ -34,13 +34,7 @@ CLIP encoders independently and leaves the T5 representation unchanged.
 
 ## Installation
 
-Image generation requires Python 3.10 or newer and a CUDA-capable GPU. The
-commands below clone the repository, create an isolated Python environment,
-install the dependencies listed in `requirements.txt`, and install the TPSO
-commands into that environment.
-
-Install a PyTorch build compatible with your CUDA platform first if the default
-PyPI package is not suitable for your machine.
+Image generation requires Python 3.10 or newer and a CUDA-capable GPU.
 
 ```bash
 git clone https://github.com/Open-Debin/TPSO.git
@@ -52,8 +46,7 @@ python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 ```
 
-If you prefer Conda, `environment.yml` creates the equivalent `tpso`
-environment:
+Conda installation:
 
 ```bash
 conda env create -f environment.yml
@@ -61,9 +54,8 @@ conda activate tpso
 python -m pip install -e . --no-deps
 ```
 
-Some Stable Diffusion repositories require you to accept their license on
-Hugging Face. After receiving access, authenticate on the machine that will run
-TPSO:
+Accept the required model licenses on Hugging Face, then authenticate if the
+selected model is gated:
 
 ```bash
 hf auth login
@@ -81,20 +73,28 @@ tpso-generate \
   --output-dir outputs/red-panda
 ```
 
-Here, `--model` selects the backbone, `--prompt` supplies the text condition,
-and `--num-images` controls how many diverse variants are produced. The images
-are saved as `00.png`, `01.png`, and so on inside `outputs/red-panda`.
+`--model` accepts `sd15`, `sd21`, or `sd35`. `--num-images 4` produces four
+variants of this prompt. They are saved in `outputs/red-panda` as:
 
-On the first run, TPSO downloads the selected diffusion model and its matching
-precomputed unconditional context. Later runs reuse the local Hugging Face
-cache. Choose `sd15`, `sd21`, or `sd35` with `--model`. Use a new output
-directory for a new run, or pass `--overwrite` if existing images may be
-replaced.
+```text
+outputs/red-panda/
+|-- 0_0.jpg
+|-- 0_1.jpg
+|-- 0_2.jpg
+`-- 0_3.jpg
+```
 
-Each supported model also has a YAML configuration in `configs/`. The following
-command starts from the SD1.5 configuration and changes only `kappa` to `0.8`.
-An explicit command-line option takes precedence over the value in the YAML
-file.
+The first number is the prompt index and the second is the variant index. If
+several `--prompt` arguments are provided, the next prompt is saved as
+`1_0.jpg`, `1_1.jpg`, and so on. This is the same naming convention used by the
+paper benchmarks.
+
+The model and precomputed unconditional context are downloaded on first use and
+then loaded from the local cache. Pass `--overwrite` to replace existing output
+images.
+
+YAML configurations are available in `configs/`. Command-line values override
+the corresponding YAML values:
 
 ```bash
 tpso-generate \
@@ -106,15 +106,14 @@ tpso-generate \
 
 ## Unconditional Context
 
-Classifier-free guidance uses both conditional and unconditional prompt
-embeddings. The conditional embedding depends on the user's prompt and must be
-optimized for each generation. The unconditional embedding does not depend on
-the prompt, so TPSO optimizes it once and reuses it.
+The conditional embedding depends on the prompt and is optimized for each
+generation. The unconditional embedding is prompt-independent, so it can be
+precomputed and reused.
 
-By default, the correct context is downloaded from
-[PonyMeng/TPSO](https://huggingface.co/PonyMeng/TPSO) and its checksum is
-verified automatically. Most users do not need to manage this file manually.
-To reproduce the precomputation locally instead, use:
+The matching context is downloaded from
+[PonyMeng/TPSO](https://huggingface.co/PonyMeng/TPSO) and verified
+automatically. Use `--rebuild-unconditional` only when you want to recompute it
+locally:
 
 ```bash
 tpso-generate \
@@ -123,9 +122,6 @@ tpso-generate \
   --rebuild-unconditional \
   --output-dir outputs/chair-rebuilt
 ```
-
-This local rebuilding step is slower than loading the published context, but it
-does not change how the conditional prompt is optimized.
 
 ## Generate From 1,000 Prompts
 
