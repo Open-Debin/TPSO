@@ -116,36 +116,10 @@ embedding is prompt-independent, so TPSO downloads a precomputed version from
 | `--diversity-weight FLOAT` | Set the diversity-loss weight, lambda. |
 | `--scheduler-ratio FLOAT` | Set the coarse-to-fine schedule; a negative value reverses its direction. |
 | `--offset-init NAME` | Select the token-offset initialization distribution. |
-| `--context-path PATH` | Load a local unconditional-context tensor instead of the published one. |
-| `--rebuild-unconditional` | Recompute the unconditional context once, save it in the local cache, and use it for this run. Omit this option on later runs to reuse the cached context. |
 | `--precision MODE` | Select `fp16`, `bf16`, or `fp32`. |
 | `--overwrite` | Replace images that already exist in the output directory. |
 
 Options written on the command line override values loaded from `--config`.
-
-Without `--context-path`, rebuilt contexts are saved under
-`~/.cache/tpso/contexts/`. To save one at a specific location, combine the two
-context options once:
-
-```bash
-tpso-generate \
-  --model sd15 \
-  --prompt "A wooden chair" \
-  --rebuild-unconditional \
-  --context-path contexts/my-sd15.pt \
-  --output-dir outputs/chair
-```
-
-The command above creates `contexts/my-sd15.pt`. Load that file in later runs
-without recomputing it:
-
-```bash
-tpso-generate \
-  --model sd15 \
-  --prompt "A red panda" \
-  --context-path contexts/my-sd15.pt \
-  --output-dir outputs/red-panda
-```
 
 ## Generate From 1,000 Prompts
 
