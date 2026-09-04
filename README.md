@@ -117,7 +117,7 @@ embedding is prompt-independent, so TPSO downloads a precomputed version from
 | `--scheduler-ratio FLOAT` | Set the coarse-to-fine schedule; a negative value reverses its direction. |
 | `--offset-init NAME` | Select the token-offset initialization distribution. |
 | `--context-path PATH` | Load a local unconditional-context tensor instead of the published one. |
-| `--rebuild-unconditional` | Recompute the unconditional context locally. |
+| `--rebuild-unconditional` | Recompute the unconditional context once, save it in the local cache, and use it for this run. Omit this option on later runs to reuse the cached context. |
 | `--precision MODE` | Select `fp16`, `bf16`, or `fp32`. |
 | `--overwrite` | Replace images that already exist in the output directory. |
 
