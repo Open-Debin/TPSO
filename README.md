@@ -1,8 +1,18 @@
 # TPSO
 
 Official implementation of **TPSO: Training-Free Diverse Image Generation via Semantic Prompt Embedding Optimization** (IJCNN 2026).
-
+[![arXiv](https://img.shields.io/badge/arXiv-2409.11010-b31b1b.svg)]([https://www.arxiv.org/abs/2409.11010](https://arxiv.org/abs/2511.19811))
+[![Paper](https://img.shields.io/badge/cs.CV-Paper-b31b1b?logo=arxiv&logoColor=red)](https://www.arxiv.org/abs/2409.11010)
 TPSO improves text-to-image diversity without training or changing diffusion-model weights. It optimizes small offsets at the CLIP token-embedding level, constrains the resulting prompt embeddings to retain the original semantics, and progressively returns to the original condition during denoising.
+
+
+
+If you find this code useful for your research, please [cite](#citation) our paper.
+
+> [**TPSO: Training-Free Diverse Image Generation via Semantic Prompt Embedding Optimization**] <br>Debin Meng, Chen Jin, Zheng Gao, Yanran Li, Ioannis Patras, Georgios Tzimiropoulos<br>
+> International Joint Conference on Neural Networks 2026.<br>
+> **Abstract:** Image diversity remains a fundamental challenge for text-to-image diffusion models. Low-diversity generation often leads to repetitive outputs, increasing sampling redundancy and hindering both creative exploration and downstream applications. A key factor is the tendency of diffusion models to collapse toward strong modes in the learned distribution. Existing attempts to improve diversity, such as steering-based guidance, often introduce distortions that degrade image quality. To address this issue, we propose Token-Prompt Embedding Space Optimization (TPSO), a training-free and model-agnostic module. TPSO introduces learnable parameters to explore underrepresented regions of the token embedding space, reducing the tendency to repeatedly sample from strong modes of the distribution. Meanwhile, a prompt-level semantic constraint regulates distribution shifts, preventing quality degradation while preserving semantic fidelity. Extensive experiments on MS-COCO across three representative diffusion backbones demonstrate that TPSO substantially improves diversity, boosting performance from 1.10 to 4.18, while maintaining image quality with only a modest inference-time overhead of 3.6% to 8.9%.
+
 
 ## Release Status
 
