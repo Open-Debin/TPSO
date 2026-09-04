@@ -84,10 +84,21 @@ outputs/red-panda/
 `-- 0_3.jpg
 ```
 
-The first number is the prompt index and the second is the variant index. If
-several `--prompt` arguments are provided, the next prompt is saved as
-`1_0.jpg`, `1_1.jpg`, and so on. This is the same naming convention used by the
-paper benchmarks.
+The first number is the prompt index and the second is the variant index. To
+generate images for several prompts, repeat `--prompt` once for each prompt:
+
+```bash
+tpso-generate \
+  --model sd15 \
+  --prompt "A red panda in a bamboo forest" \
+  --prompt "A wooden chair beside a window" \
+  --num-images 4 \
+  --output-dir outputs/two-prompts
+```
+
+The first prompt is saved as `0_0.jpg` through `0_3.jpg`. The second prompt is
+saved as `1_0.jpg` through `1_3.jpg`. This is the same naming convention used
+by the paper benchmarks.
 
 The model and precomputed unconditional context are downloaded on first use and
 then loaded from the local cache. Pass `--overwrite` to replace existing output
