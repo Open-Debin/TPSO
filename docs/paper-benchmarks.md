@@ -6,6 +6,15 @@ The input CSV must be the archived
 `coco_30k_randomly_sampled_2014_val.csv` with `file_name` and `caption` columns.
 If `--prompts-csv` is omitted, TPSO downloads and verifies it automatically.
 
+```csv
+file_name,caption
+COCO_val2014_000000054123.jpg,A group of zebras grazing in the grass.
+COCO_val2014_000000012897.jpg,a number of people standing around a large group of luggage bags
+```
+
+Only the captions are used for generation; the referenced COCO images are not
+required.
+
 ## Generate 1,000 Prompts
 
 ```bash
@@ -13,7 +22,7 @@ tpso-benchmark \
   --group table1 \
   --experiment sd15 \
   --limit-prompts 1000 \
-  --prompts-csv artifacts/datasets/coco_30k_randomly_sampled_2014_val.csv \
+  --prompts-csv /path/to/coco_30k_randomly_sampled_2014_val.csv \
   --output-root outputs/coco-1k
 ```
 

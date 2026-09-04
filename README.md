@@ -95,15 +95,24 @@ tpso-generate \
 
 ## Generate From 1,000 Prompts
 
-The CSV must contain `file_name` and `caption` columns. This command uses its
-first 1,000 prompts and generates 10 images per prompt:
+Use the paper's `coco_30k_randomly_sampled_2014_val.csv`. Its format is:
+
+```csv
+file_name,caption
+COCO_val2014_000000054123.jpg,A group of zebras grazing in the grass.
+COCO_val2014_000000012897.jpg,a number of people standing around a large group of luggage bags
+```
+
+The image files themselves are not required. `file_name` is retained as source
+metadata and `caption` is the generation prompt. This command reads the first
+1,000 rows from a local copy and generates 10 images per prompt:
 
 ```bash
 tpso-benchmark \
   --group table1 \
   --experiment sd15 \
   --limit-prompts 1000 \
-  --prompts-csv path/to/coco_30k_randomly_sampled_2014_val.csv \
+  --prompts-csv /path/to/coco_30k_randomly_sampled_2014_val.csv \
   --output-root outputs/coco-1k
 ```
 
