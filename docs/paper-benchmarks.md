@@ -39,8 +39,10 @@ tpso-benchmark --group table4 --output-root outputs/paper
 tpso-benchmark --group table5 --output-root outputs/paper
 ```
 
-Table I uses 5,000 prompts. Tables II-V use 1,000 prompts. Each prompt produces
-10 images. Existing complete batches are skipped when resuming.
+The first command runs all three Table I experiments: SD1.5, SD2.1, and SD3.5.
+Each model uses 5,000 prompts and generates 10 variants per prompt, so Table I
+produces 150,000 images in total. Tables II-V use 1,000 prompts for each
+experiment. Existing complete batches are skipped when resuming.
 
 `--group table1` selects all three main-comparison experiments: SD1.5, SD2.1,
 and SD3.5. Before generating images, you can inspect these selected experiments
@@ -65,7 +67,5 @@ count, seed, batch size, and other generation settings. If a run is interrupted,
 execute the same command again: TPSO reads this manifest, skips complete
 batches, and continues from the remaining prompts.
 
-Do not write a different configuration into that same result directory. For
-example, after running with `--batch-size 5`, a new run with `--batch-size 8`
-should use a different root such as `outputs/paper-batch8`. This keeps images
-generated with different settings separate and prevents accidental mixing.
+If any parameter changes, use a new `--output-root` so results from different
+settings are not mixed.

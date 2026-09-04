@@ -101,38 +101,27 @@ saved as `1_0.jpg` through `1_3.jpg`. This is the same naming convention used
 by the paper benchmarks.
 
 The model and precomputed unconditional context are downloaded on first use and
-then loaded from the local cache. Pass `--overwrite` to replace existing output
-images.
+then loaded from the local cache.
 
-YAML configurations are available in `configs/`. Command-line values override
-the corresponding YAML values:
+## Configuration
 
-```bash
-tpso-generate \
-  --config configs/sd15.yaml \
-  --prompt "A wooden chair" \
-  --kappa 0.8 \
-  --output-dir outputs/chair
-```
+The conditional embedding is optimized for each prompt. The unconditional
+embedding is prompt-independent, so TPSO downloads a precomputed version from
+[PonyMeng/TPSO](https://huggingface.co/PonyMeng/TPSO) and reuses it.
 
-## Unconditional Context
+| Option | Meaning |
+| --- | --- |
+| `--config PATH` | Load a YAML configuration from `configs/`. |
+| `--kappa FLOAT` | Set the target semantic similarity to the original prompt. |
+| `--diversity-weight FLOAT` | Set the diversity-loss weight, lambda. |
+| `--scheduler-ratio FLOAT` | Set the coarse-to-fine schedule; a negative value reverses its direction. |
+| `--offset-init NAME` | Select the token-offset initialization distribution. |
+| `--context-path PATH` | Load a local unconditional-context tensor instead of the published one. |
+| `--rebuild-unconditional` | Recompute the unconditional context locally. |
+| `--precision MODE` | Select `fp16`, `bf16`, or `fp32`. |
+| `--overwrite` | Replace images that already exist in the output directory. |
 
-The conditional embedding depends on the prompt and is optimized for each
-generation. The unconditional embedding is prompt-independent, so it can be
-precomputed and reused.
-
-The matching context is downloaded from
-[PonyMeng/TPSO](https://huggingface.co/PonyMeng/TPSO) and verified
-automatically. Use `--rebuild-unconditional` only when you want to recompute it
-locally:
-
-```bash
-tpso-generate \
-  --model sd15 \
-  --prompt "A wooden chair" \
-  --rebuild-unconditional \
-  --output-dir outputs/chair-rebuilt
-```
+Options written on the command line override values loaded from `--config`.
 
 ## Generate From 1,000 Prompts
 
@@ -169,8 +158,18 @@ The result directory contains 10,000 images named
 `{prompt_id}_{variant_id}.jpg`, together with `prompts.csv` and `manifest.json`.
 The manifest records the settings used for that run. If generation is
 interrupted, rerunning the same command skips completed batches and continues
-the experiment. If you change the model, prompt count, seed, or batch size, use
-a new `--output-root` so results from different settings are not mixed.
+the experiment. If any parameter changes, use a new `--output-root` so results
+from different settings are not mixed.
+
+To generate the complete Table I benchmark, omit `--experiment` and
+`--limit-prompts`:
+
+```bash
+tpso-benchmark --group table1 --output-root outputs/paper
+```
+
+This runs SD1.5, SD2.1, and SD3.5. Each model uses 5,000 prompts and generates
+10 variants per prompt, resulting in 150,000 images across the three models.
 
 See [the method-to-code map](docs/method.md) for implementation details and
 [paper benchmark generation](docs/paper-benchmarks.md) for Tables I-V.
