@@ -174,11 +174,11 @@ See [the method-to-code map](docs/method.md) for implementation details and
 ## Citation
 
 ```bibtex
-@inproceedings{meng2026tpso,
-  title     = {TPSO: Training-Free Diverse Image Generation via Semantic Prompt Embedding Optimization},
-  author    = {Meng, Debin and Jin, Chen and Gao, Zheng and Li, Yanran and Patras, Ioannis and Tzimiropoulos, Georgios},
-  booktitle = {International Joint Conference on Neural Networks},
-  year      = {2026}
+@article{meng2025training,
+  title={Training-free generation of diverse and high-fidelity images via prompt semantic space optimization},
+  author={Meng, Debin and Jin, Chen and Gao, Zheng and Li, Yanran and Patras, Ioannis and Tzimiropoulos, Georgios},
+  journal={arXiv preprint arXiv:2511.19811},
+  year={2025}
 }
 ```
 
