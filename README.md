@@ -123,6 +123,30 @@ embedding is prompt-independent, so TPSO downloads a precomputed version from
 
 Options written on the command line override values loaded from `--config`.
 
+Without `--context-path`, rebuilt contexts are saved under
+`~/.cache/tpso/contexts/`. To save one at a specific location, combine the two
+context options once:
+
+```bash
+tpso-generate \
+  --model sd15 \
+  --prompt "A wooden chair" \
+  --rebuild-unconditional \
+  --context-path contexts/my-sd15.pt \
+  --output-dir outputs/chair
+```
+
+The command above creates `contexts/my-sd15.pt`. Load that file in later runs
+without recomputing it:
+
+```bash
+tpso-generate \
+  --model sd15 \
+  --prompt "A red panda" \
+  --context-path contexts/my-sd15.pt \
+  --output-dir outputs/red-panda
+```
+
 ## Generate From 1,000 Prompts
 
 The paper experiments use `coco_30k_randomly_sampled_2014_val.csv`. The file has
