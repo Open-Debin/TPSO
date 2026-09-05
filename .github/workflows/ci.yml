@@ -29,8 +29,12 @@ jobs:
         run: ruff check .
       - name: Test
         run: pytest -q
+      # Keep Transformers 5.5.4 for validated CLIP compatibility.
+      # CVE-2026-9856 concerns saving malicious tokenizer/processor chat templates.
+      # TPSO does not expose that save/export workflow.
+      # Reassess this exception if tokenizer/processor export is added.
       - name: Audit runtime dependencies
-        run: pip-audit --requirement requirements.txt --progress-spinner off
+        run: pip-audit --requirement requirements.txt --progress-spinner off --ignore-vuln CVE-2026-9856
       - name: CLI smoke tests
         run: |
           tpso-generate --model sd15 --prompt "a red panda" --dry-run
